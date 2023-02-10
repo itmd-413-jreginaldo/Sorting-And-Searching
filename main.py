@@ -10,10 +10,9 @@ import random
 import matplotlib.pyplot as plt
 
 """
+Bubble Sort Algo
 CREDIT: https://www.geeksforgeeks.org/python-program-for-bubble-sort/
 """
-
-
 def bubble_sort_algo(data):
     swapped = False
     # Looping from size of array from last index[-1] to index [0]
@@ -30,6 +29,7 @@ def bubble_sort_algo(data):
 
 
 """
+Shell Sort Algo
 CREDIT: https://www.programiz.com/dsa/shell-sort
 """
 
@@ -50,6 +50,7 @@ def shell_sort_algo(array, n):
 
 
 """
+Quick Sort Algo
 CREDIT: https://www.geeksforgeeks.org/python-program-for-quicksort/
 """
 # function to find the partition position
