@@ -32,8 +32,6 @@ def bubble_sort_algo(data):
 Shell Sort Algo
 CREDIT: https://www.programiz.com/dsa/shell-sort
 """
-
-
 def shell_sort_algo(array, n):
     # Rearrange elements at each n/2, n/4, n/8, ... intervals
     interval = n // 2
@@ -102,6 +100,9 @@ def quick_sort_algo(array, low, high):
         quick_sort_algo(array, pi + 1, high)
 
 
+"""
+Functions to determine time per sorting algorithm
+"""
 def determine_time_bubble(data):
     start_time = time.time()  # start the clock
     bubble_sort_algo(data)  # put your sorting method
@@ -143,7 +144,7 @@ def generate_lists():
     shell_sort_time_list = []
     quick_sort_time_list = []
 
-    # Manually adjust recursion limit to fix recursion depth error from quick sort
+    # Manually adjust recursion limit to bypass recursion depth error from quick sort
     sys.setrecursionlimit(10 ** 6)
 
     for i in range(0, 10000):  # create 10000 random numbers
