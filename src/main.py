@@ -4,6 +4,7 @@ Python Sorting and Searching
 This program will visualize the different speeds of three different sorting techniques, bubble sort, shell sort, and
 quick sort. The program will output graphs showings the "Time vs Size of Data" relationships per sorting technique.
 """
+
 import sys
 import time
 import random
@@ -101,7 +102,7 @@ def quick_sort_algo(array, low, high):
 
 
 """
-Functions to determine time per sorting algorithm
+Functions to determine time
 """
 def determine_time_bubble(data):
     start_time = time.time()  # start the clock
@@ -131,6 +132,9 @@ def determine_time_quick(data):
     return stop_time
 
 
+"""
+Function to generate int lists and store time values for each sort
+"""
 def generate_lists():
     # Lists to store different ranges of data
     ten_thousand_list = []
@@ -138,54 +142,71 @@ def generate_lists():
     fifty_thousand_list = []
     seventy_thousand_list = []
     ninety_thousand_list = []
+    graph_list = [10000, 30000, 50000, 70000, 90000]
 
     # Lists to store different times achieved per dataset / per sort
     bubble_sort_time_list = []
     shell_sort_time_list = []
     quick_sort_time_list = []
 
-    # Manually adjust recursion limit to bypass recursion depth error from quick sort
-    sys.setrecursionlimit(10 ** 6)
-
     for i in range(0, 10000):  # create 10000 random numbers
         x = random.randint(1, 10000)  # ranges 1 to 10000
         ten_thousand_list.append(x)
-
-    bubble_sort_time_list.append(determine_time_bubble(ten_thousand_list))
-    shell_sort_time_list.append(determine_time_shell(ten_thousand_list))
-    quick_sort_time_list.append(determine_time_quick(ten_thousand_list))
 
     for i in range(0, 30000):  # create 30000 random numbers
         x = random.randint(1, 30000)  # ranges 1 to 30000
         thirty_thousand_list.append(x)
 
-    bubble_sort_time_list.append(determine_time_bubble(thirty_thousand_list))
-    shell_sort_time_list.append(determine_time_shell(thirty_thousand_list))
-    quick_sort_time_list.append(determine_time_quick(thirty_thousand_list))
-
     for i in range(0, 50000):  # create 50000 random numbers
         x = random.randint(1, 50000)  # ranges 1 to 50000
         fifty_thousand_list.append(x)
-
-    bubble_sort_time_list.append(determine_time_bubble(fifty_thousand_list))
-    shell_sort_time_list.append(determine_time_shell(fifty_thousand_list))
-    quick_sort_time_list.append(determine_time_quick(fifty_thousand_list))
 
     for i in range(0, 70000):  # create 70000 random numbers
         x = random.randint(1, 70000)  # ranges 1 to 70000
         seventy_thousand_list.append(x)
 
-    bubble_sort_time_list.append(determine_time_bubble(seventy_thousand_list))
-    shell_sort_time_list.append(determine_time_shell(seventy_thousand_list))
-    quick_sort_time_list.append(determine_time_quick(seventy_thousand_list))
-
     for i in range(0, 90000):  # create 90000 random numbers
         x = random.randint(1, 90000)  # ranges 1 to 90000
         ninety_thousand_list.append(x)
 
+    # Bubble Sort
+    bubble_sort_time_list.append(determine_time_bubble(ten_thousand_list))
+    bubble_sort_time_list.append(determine_time_bubble(thirty_thousand_list))
+    bubble_sort_time_list.append(determine_time_bubble(fifty_thousand_list))
+    bubble_sort_time_list.append(determine_time_bubble(seventy_thousand_list))
     bubble_sort_time_list.append(determine_time_bubble(ninety_thousand_list))
-    shell_sort_time_list.append(determine_time_shell(ninety_thousand_list))
-    quick_sort_time_list.append(determine_time_quick(ninety_thousand_list))
+
+    plt.plot(graph_list, bubble_sort_time_list)
+    plt.title("Bubble Sort Range vs. Time")
+    plt.xlabel("Range")
+    plt.ylabel("Time (s)")
+    plt.show()
+
+    # Shell Sort
+    # shell_sort_time_list.append(determine_time_shell(ten_thousand_list))
+    # shell_sort_time_list.append(determine_time_shell(thirty_thousand_list))
+    # shell_sort_time_list.append(determine_time_shell(fifty_thousand_list))
+    # shell_sort_time_list.append(determine_time_shell(seventy_thousand_list))
+    # shell_sort_time_list.append(determine_time_shell(ninety_thousand_list))
+
+    # plt.plot(graph_list, shell_sort_time_list)
+    # plt.title("Shell Sort Range vs. Time")
+    # plt.xlabel("Range")
+    # plt.ylabel("Time (s)")
+    # plt.show()
+
+    # Quick Sort
+    # quick_sort_time_list.append(determine_time_quick(ten_thousand_list))
+    # quick_sort_time_list.append(determine_time_quick(thirty_thousand_list))
+    # quick_sort_time_list.append(determine_time_quick(fifty_thousand_list))
+    # quick_sort_time_list.append(determine_time_quick(seventy_thousand_list))
+    # quick_sort_time_list.append(determine_time_quick(ninety_thousand_list))
+    #
+    # plt.plot(graph_list, quick_sort_time_list)
+    # plt.title("Quick Sort Range vs. Time")
+    # plt.xlabel("Range")
+    # plt.ylabel("Time (s)")
+    # plt.show()
 
 
 def main():
